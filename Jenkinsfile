@@ -56,21 +56,21 @@ pipeline {
             steps{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
-                       sh "docker build -t amazon-cicd ."
-                       sh "docker tag amazon-cicd kishoretk12/amazon-cicd:latest "
-                       sh "docker push kishoretk12/amazon-cicd:latest "
+                       sh "docker build -t amazon-cicd1 ."
+                       sh "docker tag amazon-cicd1 kishoretk12/amazon-cicd1:latest "
+                       sh "docker push kishoretk12/amazon-cicd1:latest "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image kishoretk12/amazon-cicd:latest > trivyimage.txt"
+                sh "trivy image kishoretk12/amazon-cicd1:latest > trivyimage.txt"
             }
         }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d --name amazon-cicd -p 3000:3000 kishoretk12/amazon-cicd:latest'
+                sh 'docker run -d --name amazon-cicd1 -p 3000:3000 kishoretk12/amazon-cicd1:latest'
             }
         }
     }
