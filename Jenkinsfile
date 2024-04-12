@@ -85,5 +85,4 @@ post {
                 to: 'kishore.kumar0728@gmail.com',                              
                 attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
         }
-    }
-}
+ }
